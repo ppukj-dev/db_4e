@@ -1,7 +1,6 @@
 from repo import get_data
 
 import os
-import re
 import asyncio
 import markdownify
 import discord
