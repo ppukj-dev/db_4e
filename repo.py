@@ -1,3 +1,4 @@
+from tkinter.messagebox import NO
 import mysql.connector
 import os
 from dotenv import load_dotenv
@@ -18,6 +19,16 @@ def get_data(table: str, word: str) -> str:
     )
 
     search = ["%{}%".format(word), "{}".format(word), "{}%".format(word), "%{}".format(word)]
+    
+    cursor = mydb.cursor(buffered=True)
+    cursor.execute("SELECT id, name, description FROM {} WHERE LOWER(name) LIKE LOWER(%s) LIMIT 1".format(table), [word])
+    result = cursor.fetchall()
+    if len(result) > 0:
+        cursor.close()
+        mydb.close()
+        return result
+    cursor.close()
+
     cursor = mydb.cursor(buffered=True)
     cursor.execute("""SELECT id, name, description FROM {} WHERE LOWER(name) LIKE LOWER(%s) ORDER BY
         CASE
@@ -26,9 +37,10 @@ def get_data(table: str, word: str) -> str:
             WHEN LOWER(name) LIKE LOWER(%s) THEN 4
             ELSE 3
         END
+        LIMIT 10
     """.format(table), search)
 
-    result = cursor.fetchone()
+    result = cursor.fetchall()
 
     cursor.close()
     mydb.close()
