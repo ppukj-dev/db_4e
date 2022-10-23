@@ -122,9 +122,9 @@ async def trap_search(ctx, *, search):
 async def deity_search(ctx, *, search):
     await search_data(ctx, search, "deity")
 
-@bot.command(name='theme')
-async def theme_search(ctx, *, search):
-    await search_data(ctx, search, "theme")
+@bot.command(name='background')
+async def background_search(ctx, *, search):
+    await search_data(ctx, search, "background")
 
 @bot.command(name='epicdestiny')
 async def epicdestiny_search(ctx, *, search):
