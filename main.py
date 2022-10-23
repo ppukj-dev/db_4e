@@ -71,35 +71,79 @@ async def power_search(ctx, *, search):
     await search_data(ctx, search, "power")
 
 @bot.command(name='item')
-async def power_search(ctx, *, search):
+async def item_search(ctx, *, search):
     await search_data(ctx, search, "item")
 
 @bot.command(name='feat')
-async def power_search(ctx, *, search):
+async def feat_search(ctx, *, search):
     await search_data(ctx, search, "feat")
 
 @bot.command(name='poison')
-async def power_search(ctx, *, search):
+async def poison_search(ctx, *, search):
     await search_data(ctx, search, "poison")
 
 @bot.command(name='ritual')
-async def power_search(ctx, *, search):
+async def ritual_search(ctx, *, search):
     await search_data(ctx, search, "ritual")
 
 @bot.command(name='weapon')
-async def power_search(ctx, *, search):
+async def weapon_search(ctx, *, search):
     await search_data(ctx, search, "weapon")
 
 @bot.command(name='theme')
-async def power_search(ctx, *, search):
+async def theme_search(ctx, *, search):
     await search_data(ctx, search, "theme")
 
 @bot.command(name='disease')
-async def power_search(ctx, *, search):
+async def disease_search(ctx, *, search):
     await search_data(ctx, search, "disease")
 
 @bot.command(name='glossary')
-async def power_search(ctx, *, search):
+async def glossary_search(ctx, *, search):
     await search_data(ctx, search, "glossary")
+
+@bot.command(name='implement')
+async def implement_search(ctx, *, search):
+    await search_data(ctx, search, "implement")
+
+@bot.command(name='armor')
+async def armor_search(ctx, *, search):
+    await search_data(ctx, search, "armor")
+
+@bot.command(name='companion')
+async def companion_search(ctx, *, search):
+    await search_data(ctx, search, "companion")
+
+@bot.command(name='trap')
+async def trap_search(ctx, *, search):
+    await search_data(ctx, search, "trap")
+
+@bot.command(name='deity')
+async def deity_search(ctx, *, search):
+    await search_data(ctx, search, "deity")
+
+@bot.command(name='theme')
+async def theme_search(ctx, *, search):
+    await search_data(ctx, search, "theme")
+
+@bot.command(name='epicdestiny')
+async def epicdestiny_search(ctx, *, search):
+    await search_data(ctx, search, "epicdestiny")
+
+@bot.command(name='class')
+async def class_search(ctx, *, search):
+    await search_data(ctx, search, "class")
+
+@bot.command(name='monster')
+async def monster_search(ctx, *, search):
+    await search_data(ctx, search, "monster")
+
+@bot.command(name='paragonpath')
+async def paragonpath_search(ctx, *, search):
+    await search_data(ctx, search, "paragonpath")
+
+@bot.command(name='race')
+async def race_search(ctx, *, search):
+    await search_data(ctx, search, "race")
 
 bot.run(TOKEN)
