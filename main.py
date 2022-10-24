@@ -35,7 +35,7 @@ async def search_data(ctx, search, table):
         url = "http://iws.mx/dnd/?view={}".format(data[0][3])
         footer = "Full: [*IWS Link*]({url})"
         embed = discord.Embed(title=title, url=url, description=description)
-        embed.set_footer(footer)
+        embed.set_footer(text=footer)
         await ctx.send(embed=embed)
         return
     else:
@@ -77,7 +77,7 @@ async def search_data(ctx, search, table):
             url = "http://iws.mx/dnd/?view={}".format(data[3])
             footer = "Full: [*IWS Link*]({url})"
             embed = discord.Embed(title=title, url=url, description=description)
-            embed.set_footer(footer)
+            embed.set_footer(text=footer)
             await option_message.delete()
             await followup_message.delete()
             await ctx.send(embed=embed)
