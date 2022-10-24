@@ -30,7 +30,7 @@ async def search_data(ctx, search, table):
         description = to_markdown(data[0][2])
         if len(description) > 2000:
             description = description[:2000] + "... (too long)"
-        description += "\n\nFull: [*IWS Link*](http://iws.mx/dnd/?view={})".format(data[3])
+        description += "\n\nFull: [*IWS Link*](http://iws.mx/dnd/?view={})".format(data[0][3])
         embed = discord.Embed(title=title, description=description)
         await ctx.send(embed=embed)
         return
