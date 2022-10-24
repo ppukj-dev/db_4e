@@ -74,7 +74,7 @@ async def search_data(ctx, search, table):
             description = to_markdown(data[2])
             if len(description) > 2000:
                 description = description[:2000] + "\n\n... (too long)"
-            url = "http://iws.mx/dnd/?view={}".format(data[0][3])
+            url = "http://iws.mx/dnd/?view={}".format(data[3])
             footer = "Full: [*IWS Link*]({url})"
             embed = discord.Embed(title=title, url=url, description=description)
             embed.set_footer(footer)
