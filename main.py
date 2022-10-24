@@ -31,6 +31,7 @@ async def search_data(ctx, search, table):
         title = data[0][1]
         description = to_markdown(data[0][2])
         source = description.split("Published in ")[-1]
+        description = description.split("Published in ")[0]
         if len(description) > 2000:
             description = description[:2000] + "... (too long)"
         url = "http://iws.mx/dnd/?view={}".format(data[0][3])
@@ -73,6 +74,7 @@ async def search_data(ctx, search, table):
             title = data[1]
             description = to_markdown(data[2])
             source = description.split("Published in ")[-1]
+            description = description.split("Published in ")[0]
             if len(description) > 2000:
                 description = description[:2000] + "\n\n... (too long)"
             url = "http://iws.mx/dnd/?view={}".format(data[3])
