@@ -30,12 +30,12 @@ async def search_data(ctx, search, table):
     elif len(data) == 1:
         title = data[0][1]
         description = to_markdown(data[0][2])
+        source = description.split("\n")[-1]
         if len(description) > 2000:
             description = description[:2000] + "... (too long)"
         url = "http://iws.mx/dnd/?view={}".format(data[0][3])
-        footer = "Full: [*IWS Link*]({url})"
         embed = discord.Embed(title=title, url=url, description=description)
-        embed.set_footer(text=footer)
+        embed.set_footer(text=source)
         await ctx.send(embed=embed)
         return
     else:
@@ -72,12 +72,12 @@ async def search_data(ctx, search, table):
             data = map[followup_message.content]
             title = data[1]
             description = to_markdown(data[2])
+            source = description.split("\n")[-1]
             if len(description) > 2000:
                 description = description[:2000] + "\n\n... (too long)"
             url = "http://iws.mx/dnd/?view={}".format(data[3])
-            footer = "Full: [*IWS Link*]({url})"
             embed = discord.Embed(title=title, url=url, description=description)
-            embed.set_footer(text=footer)
+            embed.set_footer(text=source)
             await option_message.delete()
             await followup_message.delete()
             await ctx.send(embed=embed)
