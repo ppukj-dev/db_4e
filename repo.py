@@ -20,7 +20,7 @@ def get_data(table: str, word: str) -> str:
     search = ["%{}%".format(word), "{}".format(word), "{}%".format(word), "%{}".format(word)]
     
     cursor = mydb.cursor(buffered=True)
-    cursor.execute("SELECT id, name, description FROM {} WHERE LOWER(name) LIKE LOWER(%s) LIMIT 1".format(table), [word])
+    cursor.execute("SELECT id, name, description, iws_id FROM {} WHERE LOWER(name) LIKE LOWER(%s) LIMIT 1".format(table), [word])
     result = cursor.fetchall()
     if len(result) > 0:
         cursor.close()
@@ -29,7 +29,7 @@ def get_data(table: str, word: str) -> str:
     cursor.close()
 
     cursor = mydb.cursor(buffered=True)
-    cursor.execute("""SELECT id, name, description FROM {} WHERE LOWER(name) LIKE LOWER(%s) ORDER BY
+    cursor.execute("""SELECT id, name, description, iws_id FROM {} WHERE LOWER(name) LIKE LOWER(%s) ORDER BY
         CASE
             WHEN LOWER(name) LIKE LOWER(%s) THEN 1
             WHEN LOWER(name) LIKE LOWER(%s) THEN 2

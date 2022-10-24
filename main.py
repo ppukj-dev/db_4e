@@ -28,6 +28,9 @@ async def search_data(ctx, search, table):
     elif len(data) == 1:
         title = data[0][1]
         description = to_markdown(data[0][2])
+        if len(description) > 2000:
+            description = description[:2000] + "... (too long)"
+        description += "\n\nFull: [*IWS Link*](http://iws.mx/dnd/?view={})".format(data[3])
         embed = discord.Embed(title=title, description=description)
         await ctx.send(embed=embed)
         return
@@ -59,6 +62,9 @@ async def search_data(ctx, search, table):
             data = map[followup_message.content]
             title = data[1]
             description = to_markdown(data[2])
+            if len(description) > 2000:
+                description = description[:2000] + "... (too long)"
+            description += "\n\nFull: [*IWS Link*](http://iws.mx/dnd/?view={})".format(data[3])
             embed = discord.Embed(title=title, description=description)
             await option_message.delete()
             await followup_message.delete()
