@@ -32,9 +32,10 @@ async def search_data(ctx, search, table):
         description = to_markdown(data[0][2])
         if len(description) > 2000:
             description = description[:2000] + "... (too long)"
-        iws_link = "http://iws.mx/dnd/?view={}".format(data[0][3])
-        description += "\n\nFull: [*IWS Link*]({iws_link})"
-        embed = discord.Embed(title=title, url=iws_link, description=description)
+        url = "http://iws.mx/dnd/?view={}".format(data[0][3])
+        footer = "Full: [*IWS Link*]({url})"
+        embed = discord.Embed(title=title, url=url, description=description)
+        embed.set_footer(footer)
         await ctx.send(embed=embed)
         return
     else:
@@ -72,11 +73,11 @@ async def search_data(ctx, search, table):
             title = data[1]
             description = to_markdown(data[2])
             if len(description) > 2000:
-                description = description[:2000] + "... (too long)"
-            description += "\n\nFull: [*IWS Link*](http://iws.mx/dnd/?view={})".format(
-                data[3]
-            )
-            embed = discord.Embed(title=title, description=description)
+                description = description[:2000] + "\n\n... (too long)"
+            url = "http://iws.mx/dnd/?view={}".format(data[0][3])
+            footer = "Full: [*IWS Link*]({url})"
+            embed = discord.Embed(title=title, url=url, description=description)
+            embed.set_footer(footer)
             await option_message.delete()
             await followup_message.delete()
             await ctx.send(embed=embed)
