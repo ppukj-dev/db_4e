@@ -34,7 +34,7 @@ async def search_data(ctx, search, table):
             description = description[:2000] + "... (too long)"
         url = "http://iws.mx/dnd/?view={}".format(data[0][3])
         description += "\n\nFull: [*IWS Link*]({url})"
-        embed = discord.Embed(title=title, description=description, url=url)
+        embed = discord.Embed(title=title, url=url, description=description)
         await ctx.send(embed=embed)
         return
     else:
