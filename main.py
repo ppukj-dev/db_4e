@@ -5,6 +5,8 @@ import asyncio
 import markdownify
 import discord
 from discord.ext import commands
+import yatg
+import re
 
 from dotenv import load_dotenv
 
@@ -15,8 +17,19 @@ intents = discord.Intents.all()
 
 bot = commands.Bot(command_prefix=[";;"], intents=intents)
 
+def table_converter(html: str) -> str:
+    tables = re.findall(r'<table.*>.*</table>', html)
+    if len(tables) == 0:
+        return html
+    
+    for table in tables:
+        ascii_table = yatg.html_2_ascii_table(html_content=table, output_style="orgmode")
+        html = html.replace(table, "```" + ascii_table + "```")
+    return html
+
 
 def to_markdown(html: str) -> str:
+    html = table_converter(html)
     html = html.replace("<span", "\t|\t<span")
     md = markdownify.markdownify(html=html)
     return md
