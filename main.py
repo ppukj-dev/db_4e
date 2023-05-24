@@ -47,7 +47,7 @@ async def search_data(ctx, search, table):
         description = description.split("Published in ")[0]
         if len(description) > 2000:
             description = description[:2000] + "... (too long)"
-        url = "http://iws.mx/dnd/?view={}".format(data[0][3])
+        url = "https://www.dyasdesigns.com/dnd4e/?view={}".format(data[0][3])
         embed = discord.Embed(title=title, url=url, description=description)
         embed.set_footer(text=source)
         await ctx.send(embed=embed)
@@ -90,7 +90,7 @@ async def search_data(ctx, search, table):
             description = description.split("Published in ")[0]
             if len(description) > 2000:
                 description = description[:2000] + "\n\n... (too long)"
-            url = "http://iws.mx/dnd/?view={}".format(data[3])
+            url = "https://www.dyasdesigns.com/dnd4e/?view={}".format(data[3])
             embed = discord.Embed(title=title, url=url, description=description)
             embed.set_footer(text=source)
             await option_message.delete()
