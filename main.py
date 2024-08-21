@@ -110,7 +110,7 @@ async def help(ctx):
     embed.add_field(name="List of Commands", value="`power`, `item`, `feat`, `poison`, `ritual`, `weapon`, \
                     `theme`, `disease`, `glossary`, `implement`, `trap`, `race`, `class`, `deity`, `background`, \
                     `monster`, `companion`, `paragonpath`, `epicdestiny`, `armor`")
-    ctx.send(embed=embed)
+    await ctx.send(embed=embed)
 
 
 @bot.command(name="power")
