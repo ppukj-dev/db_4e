@@ -15,7 +15,11 @@ TOKEN = os.getenv("DISCORD_TOKEN")
 
 intents = discord.Intents.all()
 
-bot = commands.Bot(command_prefix=[";;"], intents=intents)
+bot = commands.Bot(
+    command_prefix=[";;"],
+    intents=intents,
+    help_command=None
+    )
 
 def table_converter(html: str) -> str:
     tables = re.findall(r'<table.*>.*</table>', html)
@@ -97,6 +101,16 @@ async def search_data(ctx, search, table):
             await followup_message.delete()
             await ctx.send(embed=embed)
             return
+
+
+@bot.command()
+async def help(ctx):
+    embed = discord.Embed(title="Help")
+    embed.description = "`;;<command> <searched text>` - search for <command> with <searched text>\n"
+    embed.add_field(name="List of Commands", value="`power`, `item`, `feat`, `poison`, `ritual`, `weapon`, \
+                    `theme`, `disease`, `glossary`, `implement`, `trap`, `race`, `class`, `deity`, `background`, \
+                    `monster`, `companion`, `paragonpath`, `epicdestiny`, `armor`")
+    ctx.send(embed=embed)
 
 
 @bot.command(name="power")
